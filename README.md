@@ -1,5 +1,9 @@
-# rafa-repo-example
-An example of a repo for an Astro deployment
+# Astro repo example
+This contains an example for a repo that is aligned to a 
+set of Astro deployments that contain a dev, qa and prod 
+instance in Astro. 
+
+There are two workflows diagramed below: `Trunk Based` and `Branch` development.
 
 # Repo Branches
 * `main`
@@ -7,7 +11,7 @@ An example of a repo for an Astro deployment
 * `qa`
 * `prod`
 
-# Folder structure
+# Repo Contents
 
 ```
 ├── Dockerfile

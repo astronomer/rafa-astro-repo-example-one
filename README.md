@@ -1,8 +1,8 @@
 # rafa-repo-example
 An example of a repo for an Astro deployment
 
-# This is used for a set of deployments
-It contains the following branches
+# Repo Branches
+* `main`
 * `dev`
 * `qa`
 * `prod`
@@ -26,7 +26,8 @@ It contains the following branches
         └── test_dag_integrity.py
 ```
 
-# CI/CD Process - Trunk Based
+# Development Approaches
+## Trunk Based
 * Each deployment contains the code in the `main` branch
 
 ```mermaid
@@ -54,22 +55,27 @@ graph LR;
     ci-cd.release-tag-- prod tag -->prod;
 ```
 
-# CI/CD Process -  Branch Development
+# Branch Development
 * Each deployment has a relationship to a specific branch
 
 ```mermaid
-graph LR;
+    subgraph branches
+        git.hotfix
+        git.feature
+    end
     subgraph git
-    git.dev
-    git.qa
-    git.prod
+        git.dev
+        git.qa
+        git.prod
     end
     subgraph astro
-    dev
-    qa
-    prod
+        dev
+        qa
+        prod
     end
-    
+    branches-- test in dev -->git.dev;
+    branches-- test in qa -->git.qa;
+    branches-- test in prod -->git.prod;
     git.dev-->dev;
     git.qa-->qa;
     git.prod-->prod;

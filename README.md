@@ -31,24 +31,27 @@ It contains the following branches
 
 ```mermaid
 graph LR;
-    subgraph updates
-    updates.hotfix
-    updates.feature
+    subgraph update branches
+        updates.hotfix
+        updates.feature
     end
     subgraph git
-    git.main
+        git.main
+    end
+    subgraph ci-cd
+        ci-cd.release-tag
     end
     subgraph astro
-    dev
-    qa
-    prod
+        dev
+        qa
+        prod
     end
-    
     updates.hotfix-->git.main;
     updates.feature-->git.main;
-    git.main-|ci cd handles dev update|->dev;
-    git.main-|ci cd handles qa update|->qa;
-    git.main-|ci cd handles prod update|->prod;
+    git.main-->ci-cd;
+    ci-cd.release-tag-- dev tag -->dev;
+    ci-cd.release-tag-- qa tag -->qa;
+    ci-cd.release-tag-- prod tag -->prod;
 ```
 
 # CI/CD Process -  Branch Development

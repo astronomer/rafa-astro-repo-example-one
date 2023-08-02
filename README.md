@@ -32,8 +32,8 @@ It contains the following branches
 ```mermaid
 graph LR;
     subgraph updates
-    git.hotfix
-    git.feature
+    updates.hotfix
+    updates.feature
     end
     subgraph git
     git.main
@@ -44,8 +44,8 @@ graph LR;
     prod
     end
     
-    git.hotfix-->git.main;
-    git.feature-->git.main;
+    updates.hotfix-->git.main;
+    updates.feature-->git.main;
     git.main-|ci cd handles dev update|->dev;
     git.main-|ci cd handles qa update|->qa;
     git.main-|ci cd handles prod update|->prod;

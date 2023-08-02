@@ -59,6 +59,7 @@ graph LR;
 * Each deployment has a relationship to a specific branch
 
 ```mermaid
+graph LR;
     subgraph branches
         git.hotfix
         git.feature

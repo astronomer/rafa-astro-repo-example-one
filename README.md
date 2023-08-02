@@ -26,7 +26,33 @@ It contains the following branches
         └── test_dag_integrity.py
 ```
 
-# CI/CD Process
+# CI/CD Process - Trunk Based
+* Each deployment contains the code in the `main` branch
+
+```mermaid
+graph LR;
+    subgraph updates
+    git.hotfix
+    git.feature
+    end
+    subgraph git
+    git.main
+    end
+    subgraph astro
+    dev
+    qa
+    prod
+    end
+    
+    git.hotfix-->git.main;
+    git.feature-->git.main;
+    git.main-|ci cd handles dev update|->dev;
+    git.main-|ci cd handles qa update|->qa;
+    git.main-|ci cd handles prod update|->prod;
+```
+
+# CI/CD Process -  Branch Development
+* Each deployment has a relationship to a specific branch
 
 ```mermaid
 graph LR;
@@ -44,11 +70,4 @@ graph LR;
     git.dev-->dev;
     git.qa-->qa;
     git.prod-->prod;
-```
-
-# Mermaid Example
-```mermaid
-flowchart TD
-    A-->B;
-    B-->C;
 ```
